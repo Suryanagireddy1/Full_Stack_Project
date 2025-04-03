@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -10,9 +9,11 @@ import Account from './pages/Account';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
+const basename = process.env.NODE_ENV === "production" ? "/Full_Stack_Project" : "";
+
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
