@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 function ProductCarousel() {
   // Category data with name and image paths
   const categories = [
-    { id: 1, name: 'Furniture', image: '/assets/images/furniture.jpg' },
-    { id: 2, name: 'Laptop', image: '/assets/images/laptop.jpg' },
-    { id: 3, name: 'Pottery', image: '/assets/images/pottery.jpg' },
-    { id: 4, name: 'Saree', image: '/assets/images/saree.jpg' },
-    { id: 5, name: 'Spices', image: '/assets/images/spices.jpg' },
+    { id: 1, name: 'Furniture', image: `${process.env.PUBLIC_URL}/images/furniture.jpg` },
+    { id: 2, name: 'Laptop', image: `${process.env.PUBLIC_URL}/images/laptop.jpg` },
+    { id: 3, name: 'Pottery', image: `${process.env.PUBLIC_URL}/images/pottery.jpg` },
+    { id: 4, name: 'Saree', image: `${process.env.PUBLIC_URL}/images/saree.jpg` },
+    { id: 5, name: 'Spices', image: `${process.env.PUBLIC_URL}/images/spices.jpg` },
   ];
 
   return (

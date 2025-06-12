@@ -4,8 +4,8 @@ import CartItem from '../components/CartItem';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Indian Spices', price: 299, quantity: 1, image: '/assets/images/spices.jpg' },
-    { id: 2, name: 'Handcrafted Pottery', price: 899, quantity: 2, image: '/assets/images/pottery.jpg' },
+    { id: 1, name: 'Indian Spices', price: 299, quantity: 1, image: `${process.env.PUBLIC_URL}/images/saree.jpg` },
+    { id: 2, name: 'Handcrafted Pottery', price: 899, quantity: 2, image: `${process.env.PUBLIC_URL}/images/pottery.jpg` },
   ]);
 
   const removeItem = (itemIndex) => {

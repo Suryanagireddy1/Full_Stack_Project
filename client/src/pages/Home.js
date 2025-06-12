@@ -4,11 +4,11 @@ import ProductCard from '../components/ProductCard';
 import ProductCarousel from '../components/ProductCarousel';
 
 const products = [
-  { id: 1, name: 'Indian Spices', description: 'Spices for your kitchen', price: '₹299', image: '/assets/images/spices.jpg' },
-  { id: 2, name: 'Handcrafted Pottery', description: 'Handmade pottery from Rajasthan', price: '₹899', image: '/assets/images/pottery.jpg' },
-  { id: 3, name: 'Saree Collection', description: 'Beautiful sarees with intricate designs', price: '₹1499', image: '/assets/images/saree.jpg' },
-  { id: 4, name: 'Laptop', description: 'High-performance laptop', price: '₹40000', image: '/assets/images/laptop.jpg' },
-  { id: 5, name: 'Wooden Furniture', description: 'Handmade wooden furniture from Kerala', price: '₹5000', image: '/assets/images/furniture.jpg' },
+  { id: 1, name: 'Indian Spices', description: 'Spices for your kitchen', price: '₹299', image: `${process.env.PUBLIC_URL}/images/spices.jpg` },
+  { id: 2, name: 'Handcrafted Pottery', description: 'Handmade pottery from Rajasthan', price: '₹899', image: `${process.env.PUBLIC_URL}/images/pottery.jpg`},
+  { id: 3, name: 'Saree Collection', description: 'Beautiful sarees with intricate designs', price: '₹1499', image: `${process.env.PUBLIC_URL}/images/saree.jpg` },
+  { id: 4, name: 'Laptop', description: 'High-performance laptop', price: '₹40000', image: `${process.env.PUBLIC_URL}/images/laptop.jpg` },
+  { id: 5, name: 'Wooden Furniture', description: 'Handmade wooden furniture from Kerala', price: '₹5000', image: `${process.env.PUBLIC_URL}/images/furniture.jpg`},
 ];
 
 function Home() {

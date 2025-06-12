@@ -25,18 +25,19 @@ const productData = [
   },
   {
     id: 4,
-    name: "Wooden Furniture",
-    description: "Handcrafted wooden furniture for your home.",
-    price: "₹7,999",
-    image: `${process.env.PUBLIC_URL}/images/furniture.jpg`,
-  },
-  {
-    id: 5,
     name: "Laptop",
     description: "Powerful and lightweight laptop for work and play.",
     price: "₹59,999",
     image: `${process.env.PUBLIC_URL}/images/laptop.jpg`,
   },
+  {
+    id: 5,
+    name: "Wooden Furniture",
+    description: "Handcrafted wooden furniture for your home.",
+    price: "₹7,999",
+    image: `${process.env.PUBLIC_URL}/images/furniture.jpg`,
+  },
+  
 ];
 
 function ProductPage() {
