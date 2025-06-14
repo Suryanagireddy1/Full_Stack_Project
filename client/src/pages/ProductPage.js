@@ -6,43 +6,61 @@ const productData = [
     id: 1,
     name: "Indian Spices",
     description: "High-quality spices sourced from across India.",
-    price: "₹299",
+    price: 299,
     image: `${process.env.PUBLIC_URL}/images/spices.jpg`,
   },
   {
     id: 2,
     name: "Handcrafted Pottery",
     description: "Beautiful hand-painted pottery from Rajasthan.",
-    price: "₹899",
+    price: 899,
     image: `${process.env.PUBLIC_URL}/images/pottery.jpg`,
   },
   {
     id: 3,
     name: "Traditional Saree",
     description: "Elegant handwoven sarees with rich designs.",
-    price: "₹1,499",
+    price: 1499,
     image: `${process.env.PUBLIC_URL}/images/saree.jpg`,
   },
   {
     id: 4,
     name: "Laptop",
     description: "Powerful and lightweight laptop for work and play.",
-    price: "₹59,999",
+    price: 59999,
     image: `${process.env.PUBLIC_URL}/images/laptop.jpg`,
   },
   {
     id: 5,
     name: "Wooden Furniture",
     description: "Handcrafted wooden furniture for your home.",
-    price: "₹7,999",
+    price: 7999,
     image: `${process.env.PUBLIC_URL}/images/furniture.jpg`,
   },
-  
 ];
 
 function ProductPage() {
   const { id } = useParams();
   const product = productData.find((item) => item.id === Number(id));
+
+  const addToCart = (product) => {
+    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if the product already exists in cart
+    const existingItemIndex = existingCart.findIndex((item) => item.id === product.id);
+
+    if (existingItemIndex >= 0) {
+      // If already in cart, increase quantity
+      existingCart[existingItemIndex].quantity += 1;
+    } else {
+      // Otherwise, add new item with quantity 1
+      existingCart.push({ ...product, quantity: 1 });
+    }
+
+    // Save updated cart
+    localStorage.setItem('cart', JSON.stringify(existingCart));
+    alert(`${product.name} added to cart`);
+  };
 
   if (!product) {
     return (
@@ -63,15 +81,12 @@ function ProductPage() {
           <h1 className="text-3xl font-bold">{product.name}</h1>
           <p className="text-xl text-gray-600 mt-2">{product.description}</p>
           <div className="flex items-center mt-4">
-            <span className="text-xl font-bold text-green-600">{product.price}</span>
-            <span className="ml-4 text-sm text-gray-500">{product.reviews} / 5 ⭐</span>
+            <span className="text-xl font-bold text-green-600">₹{product.price}</span>
           </div>
-          <div className="mt-4">
-            <p><strong>Material:</strong> {product.material}</p>
-            <p><strong>Dimensions:</strong> {product.dimensions}</p>
-            <p><strong>Stock:</strong> {product.stock} available</p>
-          </div>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-md mt-6 hover:bg-blue-700 transition duration-300">
+          <button
+            onClick={() => addToCart(product)}
+            className="bg-blue-600 text-white px-4 py-2 rounded-md mt-6 hover:bg-blue-700 transition duration-300"
+          >
             Add to Cart
           </button>
         </div>
