@@ -1,12 +1,31 @@
 // src/pages/Login.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log('Logged in with', email, password);
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    if (!storedUser) {
+      alert('No account found. Please register first.');
+      navigate('/register');
+      return;
+    }
+
+    if (email === storedUser.email && password === storedUser.password) {
+      localStorage.setItem('isLoggedIn', 'true'); // to track login status
+      alert('Login successful!');
+      navigate('/account');
+    } else {
+      alert('Invalid email or password.');
+    }
   };
 
   return (
@@ -33,7 +52,10 @@ const Login = () => {
             required
           />
         </div>
-        <button className="w-full bg-blue-600 text-white py-3 rounded-md mt-6 hover:bg-blue-700">
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-3 rounded-md mt-6 hover:bg-blue-700"
+        >
           Login
         </button>
       </form>
