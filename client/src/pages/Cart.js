@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import CartItem from '../components/CartItem';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
+  const navigate = useNavigate();  // Initialize navigate
 
   // Load cart items from localStorage on mount
   useEffect(() => {
@@ -17,6 +19,10 @@ const Cart = () => {
   };
 
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const handleCheckout = () => {
+    navigate('/checkout');  // Navigate to checkout page
+  };
 
   return (
     <div className="container mx-auto p-6">
@@ -35,7 +41,10 @@ const Cart = () => {
         <span>₹{total}</span>
       </div>
       {cartItems.length > 0 && (
-        <button className="w-full bg-blue-600 text-white py-3 rounded-md mt-6 hover:bg-blue-700">
+        <button
+          onClick={handleCheckout}
+          className="w-full bg-blue-600 text-white py-3 rounded-md mt-6 hover:bg-blue-700 transition duration-300"
+        >
           Proceed to Checkout
         </button>
       )}
